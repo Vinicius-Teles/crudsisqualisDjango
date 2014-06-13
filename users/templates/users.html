@@ -8,6 +8,7 @@
 {% block content %}
 	<div class="col-md-4">
 		<form action="/usuarios/cadastro/" method="POST">
+			<input type="hidden" value="{{ id }}" name="id" />
 			{% csrf_token %}
 			{{ form.as_p }}
 			<input type="submit" value="Enviar" />
@@ -17,8 +18,10 @@
 		<table class="table table-striped">
 		<thead>
 			<tr>
+				<th> Código </th>
 				<th> Nome </th>
 				<th> Data de aniversário </th>
+				<th> Grupos </th>
 				<th> Ações </th>
 			</tr>
 		</thead>
@@ -26,9 +29,28 @@
 
 			{% for o in listUser %}
 				<tr>
+					<td> {{ o.id }} </td>
 					<td>{{ o.name }} </td>
 					<td>{{ o.anniversaryDate }}      </td>
-					<td> botão de deletar. ver api de form</td>
+					<td>{% with o.categories.all as category %}
+							{% for c in category %}
+								{{ c.name }}
+								<br/>
+							{% endfor %}
+	  						
+						{% endwith %} 
+					</td>
+					<td>
+						<form action="/usuarios/delete/{{ o.id }}/" method="POST">
+							{% csrf_token %}
+							<button type="submit"> Excluir </button>
+						</form>
+
+						<form action="/usuarios/update/{{ o.id }}/" method="POST">
+							{% csrf_token %}
+							<button type="submit"> Atualizar </button>
+						</form>
+					 </td>
 				</tr>
 			{% endfor %}
 		</tbody>
