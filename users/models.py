@@ -5,7 +5,7 @@ from django.db import models
 
 class User(models.Model):
 	name = models.CharField(max_length=200)
-	anniversaryDate = models.DateField()
+	anniversaryDate = models.DateField('anniversaryDate')
 
 	def __str__(self):
 		return self.name

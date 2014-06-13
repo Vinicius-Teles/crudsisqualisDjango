@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %} 
+	Cadastro de usuários 
+{% endblock %}
+
+
+{% block content %}
+	<div class="col-md-4">
+		<form action="/usuarios/cadastro/" method="POST">
+			{% csrf_token %}
+			{{ form.as_p }}
+			<input type="submit" value="Enviar" />
+		</form>
+	</div>
+	<div class="col-md-8">
+		<table class="table table-striped">
+		<thead>
+			<tr>
+				<th> Nome </th>
+				<th> Data de aniversário </th>
+				<th> Ações </th>
+			</tr>
+		</thead>
+		<tbody>
+
+			{% for o in listUser %}
+				<tr>
+					<td>{{ o.name }} </td>
+					<td>{{ o.anniversaryDate }}      </td>
+					<td> botão de deletar. ver api de form</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+		</table>
+	</div>
+{% endblock %}
