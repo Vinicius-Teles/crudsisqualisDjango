@@ -1,5 +1,5 @@
 crudsisqualisDjango
 ===================
 
-~~Mistaken text.~~
+#Descrição
 
