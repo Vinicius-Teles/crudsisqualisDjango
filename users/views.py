@@ -58,3 +58,16 @@ def update(request, user_id):
 			'id' : user.id
 		})
 
+def search(request):
+	if request.method == 'POST':
+		name = request.POST["nome"]
+		ret = "sadsad"
+		if not name:
+			ret = User.objects.all()
+		else:
+			ret = User.objects.filter(name__contains=name)
+		
+		return render(request, 'users.html',{
+			'form' : UserForm(),
+			'listUser' : ret
+		})

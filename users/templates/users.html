@@ -15,6 +15,14 @@
 		</form>
 	</div>
 	<div class="col-md-8">
+		<div class="input-group">
+		  <form action="/usuarios/busca/" method="POST">
+				{% csrf_token %}
+				<input type="text" class="form-control" name="nome" id="search-user" placeholder="Busca por nome">
+				<button type="submit"> Buscar </button>
+			</form>
+		  
+		</div>
 		<table class="table table-striped">
 		<thead>
 			<tr>
@@ -56,4 +64,7 @@
 		</tbody>
 		</table>
 	</div>
+
+
+
 {% endblock %}
