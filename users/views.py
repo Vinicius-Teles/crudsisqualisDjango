@@ -6,6 +6,7 @@ from .forms import UserForm
 from datetime import datetime
 from users.models import User
 from django.shortcuts import get_object_or_404
+from django.shortcuts import redirect
 
 # Create your views here.
 
@@ -26,6 +27,7 @@ def index(request):
 			form = UserForm(request.POST or None, instance=server)
 			if form.is_valid():
 				form.save()
+				return redirect("/usuarios/")
 			else:
 				formReturn = form
 
@@ -39,15 +41,9 @@ def delete(request, user_id):
 	if request.method == 'POST':
 		user = User.objects.get(pk=user_id)
 		user.delete()
-		return render(request, 'users.html',{
-			'form' : UserForm(),
-			'listUser' : User.objects.all()
-		})
+		return redirect("/usuarios/")
 	else:
-		return render(request, 'users.html',{
-			'form' : UserForm(),
-			'listUser' : User.objects.all()
-		})
+		return redirect("/usuarios/")
 
 def update(request, user_id):
 	if request.method == 'POST':

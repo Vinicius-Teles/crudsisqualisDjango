@@ -51,12 +51,12 @@
 					<td>
 						<form action="/usuarios/delete/{{ o.id }}/" method="POST">
 							{% csrf_token %}
-							<button type="submit"> Excluir </button>
+							<button type="submit" class="btn btn-danger"> Excluir </button>
 						</form>
 
 						<form action="/usuarios/update/{{ o.id }}/" method="POST">
 							{% csrf_token %}
-							<button type="submit"> Atualizar </button>
+							<button type="submit" class="btn btn-primary"> Atualizar </button>
 						</form>
 					 </td>
 				</tr>
