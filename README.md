@@ -1,2 +1,5 @@
 crudsisqualisDjango
 ===================
+
+~~Mistaken text.~~
+
